@@ -18,7 +18,10 @@
 		</div>
 		@endforeach
 		<div class="clearfix"></div>
-		{{$item->links()}}
+		<br>
+		<div class="text-center" >
+			{{$item->links('vendor.pagination.custom')}}
+		</div>
 	</div>
 
 
