@@ -21,6 +21,10 @@ class CekStatus
      */
     public function handle(Request $request, Closure $next)
     {
+        $validation = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
         $userget = \App\Models\Account::where('email', $request->email)->get();
         $user = \App\Models\Account::where('email', $request->email)->first();
         if($userget->count() > 0){
@@ -33,9 +37,11 @@ class CekStatus
                     return redirect('homepage/home');
                 }
             } else{
-                return back()->with('error', 'Wrong Email/Password. Please Check Again');
+                return back()->with('login', 'Wrong Email/Password. Please Check Again');
             }
-        }   
+        } else {
+            return back()->with('login', 'Wrong Email/Password. Please Check Again');
+        }
         return $next($request);
     }
 }

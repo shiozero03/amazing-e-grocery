@@ -22,7 +22,7 @@
 								<img id="imagefet" src="{{ asset('mystyle/image/display_picture/'.$account->display_picture_link) }}" class="w-100">
 							</td>
 							<td>
-								<label for="first-name"><h5>First Name : </h5></label>
+								<label for="first-name"><h5>{{__('home.firstname')}} : </h5></label>
 							</td>
 							<td>
 								<input type="text" name="first_name" id="first-name" class="w-100" value="{{ $account->first_name }}">
@@ -31,7 +31,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="last-name"><h5>Last Name : </h5></label>
+								<label for="last-name"><h5>{{__('home.lastname')}} : </h5></label>
 							</td>
 							<td>
 								<input type="text" name="last_name" id="last-name" class="w-100" value="{{ $account->last_name }}">
@@ -51,7 +51,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="role"><h5>Role : </h5></label>
+								<label for="role"><h5>{{__('home.role')}} : </h5></label>
 							</td>
 							<td>
 								<input type="text" name="role" disabled class="w-100" value="{{ $roleNow->role_name }}">
@@ -62,7 +62,7 @@
 						</tr>
 						<tr>
 							<td>
-								<span><h5>Gender : </h5></span>
+								<span><h5>{{__('home.gender')}} : </h5></span>
 							</td>
 							<td class="gender-radio">
 								@foreach($gender as $gen)
@@ -76,7 +76,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="display_picture_link"><h5>Display Picture : </h5></label>
+								<label for="display_picture_link"><h5>{{__('home.display')}} : </h5></label>
 							</td>
 							<td>
 								<div class="gender-radio">
@@ -95,7 +95,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="confirmpassword"><h5>Confirm Password : </h5></label>
+								<label for="confirmpassword"><h5>{{__('home.confirm')}} Password : </h5></label>
 							</td>
 							<td>
 								<input type="password" name="confirmpassword" id="confirmpassword" class="w-100" value="{{ $account->password }}">
@@ -108,7 +108,7 @@
 				</table>
 			</div>
 			<div class="button-submit text-center">
-				<button class="submit-button btn btn-warning w-25">Save</button>
+				<button class="submit-button btn btn-warning w-25">{{__('home.save')}}</button>
 			</div>
 		</form>
 	</div>

@@ -2,21 +2,21 @@
 @section('content')
 <div class="content d-flex align-items-center">
 	<div class="container">
-		<h2><u>Register</u></h2>
+		<h2><u>{{ __('home.titleregister') }}</u></h2>
 		<br>
 		<form action="{{ route('process.register') }}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div>
 				@if ($message = Session::get('success'))
 					<div class="alert alert-success">
-						Data has added successfully
+						{{ __('home.errorregister') }}
 					</div>
 				@endif
 				<table class="table border-none">
 					<tbody>
 						<tr>
 							<td>
-								<label for="first-name"><h5>First Name : </h5></label>
+								<label for="first-name"><h5>{{ __('home.firstname') }} : </h5></label>
 							</td>
 							<td>
 								<input type="text" name="first_name" id="first-name" class="w-100">
@@ -25,7 +25,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="last-name"><h5>Last Name : </h5></label>
+								<label for="last-name"><h5>{{ __('home.lastname') }} : </h5></label>
 							</td>
 							<td>
 								<input type="text" name="last_name" id="last-name" class="w-100">
@@ -45,7 +45,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="role"><h5>Role : </h5></label>
+								<label for="role"><h5>{{ __('home.role') }} : </h5></label>
 							</td>
 							<td>
 								<select class="w-100" name="role" id="role">
@@ -60,7 +60,7 @@
 						</tr>
 						<tr>
 							<td>
-								<span><h5>Gender : </h5></span>
+								<span><h5>{{ __('home.gender') }} : </h5></span>
 							</td>
 							<td class="gender-radio">
 								@foreach($gender as $gen)
@@ -74,7 +74,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="display_picture_link"><h5>Display Picture : </h5></label>
+								<label for="display_picture_link"><h5>{{ __('home.display') }} : </h5></label>
 							</td>
 							<td>
 								<div class="gender-radio">
@@ -96,7 +96,7 @@
                             	@enderror
 							</td>
 							<td>
-								<label for="confirmpassword"><h5>Confirm Password : </h5></label>
+								<label for="confirmpassword"><h5>{{ __('home.confirm') }} Password : </h5></label>
 							</td>
 							<td>
 								<input type="password" name="confirmpassword" id="confirmpassword" class="w-100">
@@ -109,8 +109,8 @@
 				</table>
 			</div>
 			<div class="button-submit text-center">
-				<button class="submit-button btn btn-warning w-25">Submit</button><br><br>
-				<a href="{{ route('login') }}">Already have an account? Click here to log in</a>
+				<button class="submit-button btn btn-warning w-25">{{ __('home.submit') }}</button><br><br>
+				<a href="{{ route('login') }}">{{ __('home.haveanaccount') }}</a>
 			</div>
 		</form>
 	</div>

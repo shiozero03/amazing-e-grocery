@@ -5,17 +5,12 @@
 </script>
 <div class="content w-100 position-absolute" style="top: 25%; ">
 	<div class="container">
-		@if (session('success'))
-			<div class="alert alert-success">
-				{{ session('success') }}
-			</div>
-		@endif
 		<h2><u>{{$accountget->first_name}} {{$accountget->last_name}}</u></h2><br>
 		<form class="col-md-4" action="{{ route('update.role') }}" method="post">
 			@csrf
 			<ul>
 				<li class="d-inline-block me-md-5">
-					<h5>Role :</h5>
+					<h5>{{__('home.role')}} :</h5>
 				</li>
 				<li class="d-inline-block w-50">
 					<input type="hidden" name="id_getaccount" value="{{ $accountget->account_id }}">
@@ -28,7 +23,7 @@
 			</ul>
 			<br>
 			<div class="text-center">
-				<button class="btn btn-warning">Save</button>
+				<button class="btn btn-warning">{{__('home.save')}}</button>
 			</div>
 		</form>
 	</div>

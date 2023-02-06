@@ -53,25 +53,14 @@ class Authcontroller extends Controller
         }
     }
     public function login_process(Request $request){
-         $validation = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-
-        if (!$validation) {
-            return back();
-        } else{
-            $account = Account::where('email', $request->email)->get();
-            if($account->count() == 0){
-                return back()->with('error', 'Wrong Email/Password. Please Check Again');
-            }
-        }
     }
     public function logout_process(Request $request){
         if(Session::has('loginid')){
             Session::pull('loginid');
-            return redirect('/')->with('logout', 'You has been logout');
+            return redirect('/logout');
         }
+    }
+    public function logout(){
+        return view('logout');
     }
 }

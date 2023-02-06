@@ -15,6 +15,13 @@ use Session;
 class Homepagecontroller extends Controller
 {
     //
+    public function index(){
+        if(!Session('loginid')){
+            return redirect('login')->with('error', 'You has not login');
+        } else {
+            return redirect('homepage/home');
+        }
+    }
     public function home(){
         if(!Session('loginid')){
             return redirect('login')->with('error', 'You has not login');

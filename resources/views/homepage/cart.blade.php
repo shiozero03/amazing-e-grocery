@@ -7,10 +7,10 @@
 	<div class="container">
 		@if (session('success'))
 			<div class="alert alert-success">
-				{{ session('success') }}
+				{{ __('home.itemdelete') }}
 			</div>
 		@endif
-		<h2><u>Cart</u></h2><br>
+		<h2><u>{{ __('home.cart') }}</u></h2><br>
 		<table class="w-100">
 			@if($order->count() > 0)
 			<tbody>

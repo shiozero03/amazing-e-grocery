@@ -7,13 +7,12 @@
 	<div class="container">
 		@if (session('success'))
 			<div class="alert alert-success">
-				{{ session('success') }}
+				{{ __('home.additem') }}
 			</div>
 		@endif
 		<div class="float-start text-center col-md-3">
 			<h4><u>{{ $item->item_name }}</u></h4>
 			<img src="{{ asset('mystyle/image/items.png') }}" class="w-75"><br>
-			{{ $item->item_name }}<br>
 		</div>
 		<div class="float-start col-md-7">
 			<h5>Rp <?= number_format($item->price,0,'.',',') ?>,-</h5>
@@ -27,7 +26,7 @@
 					@csrf
 					<input type="hidden" name="account_id" value="{{ $account->account_id }}">
 					<input type="hidden" name="item_id" value="{{ $item->item_id }}">
-					<button href="" class="btn btn-warning w-25">Buy</button>
+					<button href="" class="btn btn-warning w-25">{{__('home.buy')}}</button>
 				</form>
 			</div>
 		</div>

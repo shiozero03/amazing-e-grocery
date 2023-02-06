@@ -7,14 +7,14 @@
 	<div class="container">
 		@if (session('success'))
 			<div class="alert alert-success">
-				{{ session('success') }}
+				{{__('home.deleteaccount')}}
 			</div>
 		@endif
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<th class="text-center"><u>Account</u></th>
-					<th class="text-center"><u>Action</u></th>
+					<th class="text-center"><u>{{__('home.akun')}}</u></th>
+					<th class="text-center"><u>{{__('home.aksi')}}</u></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,7 +28,7 @@
 						@endif
 					</td>
 					<td class="text-center">
-						<a href="account-maintenance/update-role/{{ $acc->account_id }}" class="mx-3">Update Role</a> - <a href="account-maintenance/delete/{{ $acc->account_id }}" class="mx-3">Delete</a>
+						<a href="account-maintenance/update-role/{{ $acc->account_id }}" class="mx-3">{{__('home.updaterole')}}</a> - <a href="account-maintenance/delete/{{ $acc->account_id }}" class="mx-3">{{__('home.delete')}}</a>
 					</td>
 				</tr>
 				@endforeach

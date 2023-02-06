@@ -11,7 +11,7 @@
 </style>
 @if ($paginator->hasPages())
     <ul class="pager">    
-        <li>Pages</li>
+        <li>{{__('home.page')}}</li>
         @foreach ($elements as $element)
            
             @if (is_string($element))

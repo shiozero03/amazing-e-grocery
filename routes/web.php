@@ -22,11 +22,13 @@ use App\Http\Controllers\Updatecontroller;
 Route::get('/', [Homecontroller::class, 'index'])->name('home');
 Route::get('/register', [Homecontroller::class, 'register'])->name('register');
 Route::get('/login', [Homecontroller::class, 'login'])->name('login');
-Route::get('/logout', [Authcontroller::class, 'logout_process'])->name('logout');
+Route::get('/logoutprocess', [Authcontroller::class, 'logout_process'])->name('logout');
+Route::get('/logout', [Authcontroller::class, 'logout'])->name('logout.account');
 
 Route::post('/register', [Authcontroller::class, 'register_process'])->name('process.register');
 Route::post('/login', [Authcontroller::class, 'login_process'])->middleware('cekstatus')->name('process.login');
 
+Route::get('/homepage', [Homepagecontroller::class, 'index'])->name('homepage');
 Route::get('/homepage/home', [Homepagecontroller::class, 'home'])->name('homepage.home');
 Route::get('/homepage/home/items/{id}', [Homepagecontroller::class, 'items']);
 Route::post('/homepage/home/items', [Storecontroller::class, 'orders'])->name('order');
@@ -43,4 +45,13 @@ Route::post('homepage/account-maintenance/update-role', [Updatecontroller::class
 Route::get('/homepage/account-maintenance/save', [Homepagecontroller::class, 'savedaccount'])->middleware('admin')->name('savedaccount.success');
 Route::get('/homepage/account-maintenance/delete/{id}', [Deletecontroller::class, 'account_maintenance'])->middleware('admin');
 
+
+Route::get('locale/{locale}', function ($locale) {
+    if (! in_array($locale, ['en', 'id'])) {
+        abort(400);
+    }
+    app()->setLocale($locale);
+    session()->put('locale', $locale);  
+    return redirect()->back();
+})->name('locale');
 
