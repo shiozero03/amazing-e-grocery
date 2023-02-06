@@ -38,6 +38,9 @@ Route::get('/homepage/profil', [Homepagecontroller::class, 'profil'])->name('hom
 Route::post('/homepage/profil', [Updatecontroller::class, 'profil'])->name('update.account');
 Route::get('/homepage/profil/save', [Homepagecontroller::class, 'savedprofile'])->name('savedprofile.success');
 Route::get('/homepage/account-maintenance', [Homepagecontroller::class, 'account_maintenance'])->middleware('admin')->name('homepage.account.maintenance');
-Route::get('homepage/account-maintenance/update-role/{id}', [Updatecontroller::class, 'account_maintenance'])->middleware('role');
+Route::get('homepage/account-maintenance/update-role/{id}', [Updatecontroller::class, 'account_maintenance'])->middleware('admin');
+Route::post('homepage/account-maintenance/update-role', [Updatecontroller::class, 'update_role'])->middleware('admin')->name('update.role');
+Route::get('/homepage/account-maintenance/save', [Homepagecontroller::class, 'savedaccount'])->middleware('admin')->name('savedaccount.success');
+Route::get('/homepage/account-maintenance/delete/{id}', [Deletecontroller::class, 'account_maintenance'])->middleware('admin');
 
 

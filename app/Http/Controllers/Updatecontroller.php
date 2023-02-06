@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Account;
+use App\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
-
 class Updatecontroller extends Controller
 {
     //
@@ -99,10 +99,31 @@ class Updatecontroller extends Controller
 
             Account::where('account_id', $id)->update($data);
 
-            return redirect('homepage/profil/save')->with(['success' => 'Data has added successfully']);
+            return redirect('homepage/profil/save')->with(['success' => 'Data has saved successfully']);
         }
     }
     public function account_maintenance(Request $request){
-        
+        if(!Session('loginid')){
+            return redirect('login')->with('error', 'You has not login');
+        }
+        $id = Session('loginid');
+        $idget = $request->id;
+        $account = Account::where('account_id', $id)->first();
+        $accountget = Account::where('account_id', $idget)->first();
+        $roleget = Role::all();
+        $data = [
+            'account' => $account,
+            'role' => $account->role_id,
+            'accountget' => $accountget,
+            'roleget' => $roleget
+        ];
+        return view('homepage.update-account-maintenance')->with($data);
+    }
+    public function update_role(Request $request){
+        $data = [
+            'role_id' => $request->role
+        ];
+        Account::where('account_id', $request->id_getaccount)->update($data);
+        return redirect('/homepage/account-maintenance/save')->with(['success' => 'Data has saved successfully']);
     }
 }

@@ -119,5 +119,17 @@ class Homepagecontroller extends Controller
         ];
         return view('homepage.account-maintenance')->with($data);
     }
+    public function savedaccount(){
+        if(!Session('loginid')){
+            return redirect('login')->with('error', 'You has not login');
+        }
+        $id = Session('loginid');
+        $account = Account::where('account_id', $id)->first();
+        $data = [
+            'account' => $account,
+            'role' => $account->role_id
+        ];
+        return view('homepage.savedaccount')->with($data);
+    }
 
 }

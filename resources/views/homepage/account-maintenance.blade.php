@@ -5,6 +5,11 @@
 </script>
 <div class="content w-100 position-absolute" style="top: 25%; ">
 	<div class="container">
+		@if (session('success'))
+			<div class="alert alert-success">
+				{{ session('success') }}
+			</div>
+		@endif
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
@@ -23,7 +28,7 @@
 						@endif
 					</td>
 					<td class="text-center">
-						<a href="account-maintenance/update-role/{{ $acc->account_id }}" class="mx-3">Update Role</a> - <a href="homepage/account-maintenance/delete/{{ $acc->account_id }}" class="mx-3">Delete</a>
+						<a href="account-maintenance/update-role/{{ $acc->account_id }}" class="mx-3">Update Role</a> - <a href="account-maintenance/delete/{{ $acc->account_id }}" class="mx-3">Delete</a>
 					</td>
 				</tr>
 				@endforeach
