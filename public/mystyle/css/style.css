@@ -1,0 +1,28 @@
+.content{
+	width: 100%;
+	height: 100vh;
+}
+.text-content{
+	font-size: 1.5rem;
+	height: 20rem;
+	width: 20rem;
+}
+footer{
+	font-weight: 600;
+}
+h1, h2, h3, h4, h5, h6, p, span, small, strong, b, i{
+	margin: 0;
+	padding: 0;
+}
+.menu-auth{
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+}
+.menu-auth a{
+	font-weight: 600;
+	text-decoration: none;
+}
+.menu-auth a:hover{
+	text-decoration: underline;
+}
