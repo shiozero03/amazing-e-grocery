@@ -1,19 +1,17 @@
 @extends('template.templateauth')
 @section('content')
-<style type="text/css">
-	.gender-radio{
-		font-weight: 600;
-	}
-	.submit-button{
-		font-weight: 600;
-	}
-</style>
 <div class="content d-flex align-items-center">
 	<div class="container">
 		<h2><u>Login</u></h2>
 		<br>
-		<form>
+		<form action="{{ route('process.login') }}" method="post">
+			@csrf
 			<div class="col-md-6 float-md-start">
+				@if (session('error'))
+					<div class="alert alert-danger">
+						{{ session('error') }}
+					</div>
+				@endif
 				<table class="table border-none">
 					<tbody>
 						<tr>
@@ -22,6 +20,9 @@
 							</td>
 							<td>
 								<input type="text" name="email" id="email" class="w-100">
+								@error('email')
+									<small class="text-danger">{{ $message }}</small>
+                            	@enderror
 							</td>
 						</tr>
 						<tr>
@@ -30,6 +31,9 @@
 							</td>
 							<td>
 								<input type="password" name="password" id="password" class="w-100">
+								@error('password')
+									<small class="text-danger">{{ $message }}</small>
+	                        	@enderror
 							</td>
 						</tr>
 					</tbody>

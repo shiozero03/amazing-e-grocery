@@ -10,9 +10,15 @@ class Homecontroller extends Controller
 {
     //
     public function index(){
+        if(Session('loginid')){
+            return redirect('homepage/home');
+        }
         return view('home');
     }
     public function register(){
+        if(Session('loginid')){
+            return redirect('homepage/home');
+        }
         $gender = Gender::all();
         $role = Role::all();
         $data = [
@@ -22,6 +28,9 @@ class Homecontroller extends Controller
         return view('register')->with($data);
     }
     public function login(){
+        if(Session('loginid')){
+            return redirect('homepage/home');
+        }
         return view('login');
     }
 }

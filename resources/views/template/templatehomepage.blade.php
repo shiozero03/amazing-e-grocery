@@ -11,7 +11,7 @@
 					<h1>Amazing E-Grocery</h1>
 				</div>
 				<div class="menu-auth text-white position-absolute">
-					<a href="{{ route('register') }}" class="text-dark py-1 px-2 bg-warning rounded">Logout</a>
+					<a href="{{ route('logout') }}" class="text-dark py-1 px-2 bg-warning rounded">Logout</a>
 				</div>
 			</header>
 		</div>
@@ -19,14 +19,19 @@
 			<nav>
 				<ul class="py-1">
 					<li class="d-inline-block mx-3">
-						<a href="{{route('homepage.home')}}" class="text-dark text-decoration-none"><h5>Home</h5></a>
+						<a id="home" href="{{route('homepage.home')}}" class="text-dark menu-homepage"><h5>Home</h5></a>
 					</li>
 					<li class="d-inline-block mx-3">
-						<a href="" class="text-dark text-decoration-none"><h5>Chart</h5></a>
+						<a id="cart" href="{{route('homepage.cart')}}" class="text-dark menu-homepage"><h5>Cart</h5></a>
 					</li>
 					<li class="d-inline-block mx-3">
-						<a href="" class="text-dark text-decoration-none"><h5>Profile</h5></a>
+						<a id="profile" href="{{ route('homepage.profil') }}" class="text-dark menu-homepage"><h5>Profile</h5></a>
 					</li>
+					@if($role == 1)
+					<li class="d-inline-block mx-3">
+						<a id="account-maintenance" href="{{ route('homepage.account.maintenance') }}" class="text-dark menu-homepage"><h5>Account Maintenance</h5></a>
+					</li>
+					@endif
 				</ul>
 			</nav>
 		</div>

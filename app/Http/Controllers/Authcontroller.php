@@ -9,14 +9,18 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
 use App\Models\Account;
+use Session;
 
 class Authcontroller extends Controller
 {
     //
+     public function __construct() {
+      $this->middleware('CekStatus')->only('login_process');
+    }
     public function register_process(Request $request){
         $validation = $request->validate([
             'first_name' => 'required|max:25',
-            'email' => 'email|unique:accounts',
+            'email' => 'required|email|unique:accounts',
             'gender' => 'required',
             'password' => ['required',Password::min(8)->letters()->numbers()],
             'last_name' => 'required|max:25',
@@ -45,7 +49,29 @@ class Authcontroller extends Controller
             $Account->remember_token = $request->remember_token;
             $Account->save();
 
-            return back()->with(['success' => 'Data has added successfully']);
+            return back()->with('success', 'Data has added successfully');
+        }
+    }
+    public function login_process(Request $request){
+         $validation = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+
+        if (!$validation) {
+            return back();
+        } else{
+            $account = Account::where('email', $request->email)->get();
+            if($account->count() == 0){
+                return back()->with('error', 'Wrong Email/Password. Please Check Again');
+            }
+        }
+    }
+    public function logout_process(Request $request){
+        if(Session::has('loginid')){
+            Session::pull('loginid');
+            return redirect('/')->with('logout', 'You has been logout');
         }
     }
 }
