@@ -80,7 +80,7 @@
 								<div class="gender-radio">
 									<input type="file" name="display_picture_link" id="display_picture_link" class="w-100 border border-dark" accept="image/png, image/jpeg, image/jpg, image/svg">
 								</div>
-								@error('display_picture')
+								@error('display_picture_link')
 									<small class="text-danger">{{ $message }}</small>
                             	@enderror
 							</td>

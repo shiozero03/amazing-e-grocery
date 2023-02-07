@@ -14,6 +14,7 @@ return [
     */
 
     'accepted' => ' :attribute harus diterima.',
+    'alpha_num' => ' :attribute harus berupa huruf atau angka.',
     'array' => ' :attribute harus berupa array.',
     'confirmed' => 'Konfirmasi atribut :value tidak sama.',
     'current_password' => 'Password tidak sesuai.',

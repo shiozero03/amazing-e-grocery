@@ -20,7 +20,7 @@
 			<tbody>
 				@foreach($allaccount as $acc)
 				<tr>
-					<td class="text-center">{{ $acc->first_name }} {{ $acc->first_name }} - 
+					<td class="text-center">{{ $acc->first_name }} {{ $acc->last_name }} - 
 						@if($acc->role_id == 1)
 						Admin
 						@else

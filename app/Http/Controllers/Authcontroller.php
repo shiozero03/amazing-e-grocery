@@ -19,11 +19,11 @@ class Authcontroller extends Controller
     }
     public function register_process(Request $request){
         $validation = $request->validate([
-            'first_name' => 'required|max:25',
+            'first_name' => 'required|alpha-num|max:25',
             'email' => 'required|email|unique:accounts',
             'gender' => 'required',
             'password' => ['required',Password::min(8)->letters()->numbers()],
-            'last_name' => 'required|max:25',
+            'last_name' => 'required|alpha-num|max:25',
             'role' => 'required',
             'display_picture_link' => 'required',
             'confirmpassword' => ['required', Password::min(8)->letters()->numbers(), 'same:password']
