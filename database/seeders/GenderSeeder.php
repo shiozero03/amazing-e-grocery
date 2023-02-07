@@ -17,11 +17,13 @@ class GenderSeeder extends Seeder
         //
         Gender::create(
             [
+                'gender_id' => 1,
                 'gender_desc' => 'Male'
             ]
         );
         Gender::create(
             [
+                'gender_id' => 2,
                 'gender_desc' => 'Female'
             ]
         );
