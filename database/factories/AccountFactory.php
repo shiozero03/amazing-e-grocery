@@ -20,8 +20,8 @@ class AccountFactory extends Factory
         return [
             'role_id' => rand(1,2),
             'gender_id' => rand(1,2),
-            'first_name' => $this->faker->sentence(1),
-            'last_name' => $this->faker->sentence(1),
+            'first_name' => $this->faker->name(),
+            'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'display_picture' => 'bglaut.jpg',
             'password'=> Hash::make('12345678')

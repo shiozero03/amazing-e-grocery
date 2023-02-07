@@ -20,7 +20,7 @@ class CreateAccountsTable extends Migration
             $table->string('first_name', 25);
             $table->string('last_name', 25);
             $table->string('email', 100);
-            $table->string('display_picture', 100);
+            $table->string('display_picture_link', 100);
             $table->string('password', 225);
             $table->string('remember_token', 250)->nullable();
             $table->timestamps();
