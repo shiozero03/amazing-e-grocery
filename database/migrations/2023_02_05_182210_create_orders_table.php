@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('item_id');
             $table->integer('price');
             $table->timestamps();
-            $table->datetime('checkout_at');
+            $table->datetime('checkout_at')->nullable();
         });
     }
 
